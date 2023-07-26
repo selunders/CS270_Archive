@@ -1,0 +1,11 @@
+a.out is an ELF Executable file.
+assign5s21.pdf is a PDF file
+classifier.cpp is a 'regular' ASCII file.
+classifier.o is an ELF Relocatable file.
+cregion.ps is a postscript file
+DOSASCII.txt is a DOS ASCII file.
+empty.txt is an empty file.
+nonASCII.txt is a binary file.
+output.txt is a 'regular' ASCII file.
+regularASCII.txt is a 'regular' ASCII file.
+sample.bin is a binary file.

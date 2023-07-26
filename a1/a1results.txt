@@ -1,0 +1,62 @@
+// Seth Lunders
+// Professor Rinker
+// CS 270
+// Feb 1 2021
+
+// Assignment #1
+
+
+// Notes
+    I did also seperate the sorting helper functions such as swap() into sort.h
+    and sort.c files, in order to keep the main a1.c file clean and easy to understand.
+
+// From the ELF output of gcc -c a1.c
+
+Size of each function, in decimal
+    bubbleSort: 251 bytes
+    selectionSort: 255 bytes
+    quickSort: 102 bytes
+
+Address where each funcion is loaded into memory:
+    bubbleSort: 00000000000012ef
+    selectionSort: 00000000000013ea
+    quickSort: 00000000000015c9
+
+Name and location of 'entry point' for the entire program:
+    Name: _start
+    Location: 0x10a0
+
+Names and locations from stdio subroutines linked in file:
+    printf | 0000000000000000
+
+Locations and sizes of the data sections:
+    .data | 0000000000000044 or 68 bytes
+    .bss  | 0000000000000040 or 64 bytes
+
+
+
+// From the ELF output of gcc -O a1.c
+
+Size of each function, in decimal
+    bubbleSort: 136 bytes
+    selectionSort: 151 bytes
+    quickSort: 72 bytes
+
+Address where each funcion is loaded into memory:
+    bubbleSort: 0000000000001252
+    selectionSort: 00000000000012da
+    quickSort: 00000000000013df
+
+Name and location of entry point for the entire program:
+    Name: _start
+    Location: 0x10a0
+
+Names and locations from stdio subroutines linked in file:
+    printf | 0000000000000000
+
+Locations and sizes of the data sections:
+    .data | 0000000000000060 or 96 bytes
+    .bss  | 0000000000000040 or 64 bytes
+    
+    
+    

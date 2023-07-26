@@ -1,0 +1,3 @@
+I though about this possibility, but then decided against it.
+May be I am wrong, but I think that a read call, after being successful,
+still may not read any data, while the read pointer is not at the end of file.

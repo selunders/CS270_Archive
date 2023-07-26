@@ -1,0 +1,173 @@
+/* a2.c
+ *
+ * CS 270.Rinker.........Seth Lunders
+ * 2/17/2021..............lund4272@vandals.uidaho.edu
+ *
+ *
+ * 
+ * 
+ *-------------------------------------------------------------------------------------
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int makearg(char *s, char **args[]); // or int makearg(char s[], char **args[]);
+int argc;
+enum {max_string = 256};
+enum {max_tokens = 30};
+
+
+char* arrIn = "  This  is the sample string";
+char* args[max_tokens];
+ 
+char* arrTest = "Test";
+// ------------------- Feb 15 9:45
+
+// int arrLen = sizeof(arrIn);
+int strInLen;
+
+// char c;           // Used to store most recent character
+// int lexIndex = 0; // Store location in lexemeIn array
+int isSpace(char);
+void clearInput(char[]);
+
+/*
+
+    Read s[0], check if it is a space. If not, copy it to the temporary array.
+        else, copy the temp array to args[j]
+
+    
+
+
+*/
+
+// -------------------
+
+// char testArr[] = "This is an array of characters.";
+
+int main()
+{
+
+    // strArr[0] = "This";
+
+    // for (int i = 0; i < arrLen; i++)
+    // {
+    //     printf("%i: %c\n", i, arrIn[i]);
+    // }
+
+    printf("Number: %i\n", makearg(arrIn, &args));
+    // int test = 0;
+    // while(test < 5){
+    printf("strArr[0]: %p\n", args[0]);
+    printf("strArr[0]: %s\n", args[0]);
+    printf("strArr[1]: %p\n", args[1]);
+    printf("strArr[1]: %s\n", args[1]);
+    // printf("strArr[1]: %p\n", &strArr[4]);
+    // printf("strArr[1]: %s\n", &strArr[4]);
+    // printf("strArr[1]: %s\n", &strArr[8]);
+    // printf("strArr[1]: %s\n", &strArr[12]);
+    // printf("strArr[1]: %s\n", &strArr[16]);
+    // printf("strArr[1]: %s\n", &strArr[20]);
+    // printf("strArr[1]: %s\n", &strArr[28]);
+    // printf("strArr[1]: %s\n", &strArr[32]);
+    // printf("strArr[1]: %s\n", &strArr[36]);
+    // printf("strArr[1]: %s\n", &strArr[28]);
+    // printf("strArr[2]: %p\n", strArr[2]);
+    // printf("strArr[3]: %p\n", strArr[3]);
+    // printf("strArr[4]: %p\n", strArr[4]);
+    // test++;
+    // }
+}
+
+// Reference
+
+int makearg(char *s, char ***args)
+{
+    // *args = malloc(10* sizeof(char**)); // White space will be replaced with \0 characters
+    // printf("strlen s %li\n", strlen(s));
+    char tokenIn[256]; // Stores current token being identified
+
+    int i = 0; // index counter for string s
+    int j = 0; // index counter for args
+    int k = 0; // index counter for tokenIn
+
+    while (isSpace(s[i]))
+    {
+        i++;
+    } // Get rid of leading spaces
+    // printf("There were %i leading spaces\n", i);
+
+    // args[0] = malloc(10);
+    // *args[0] = "test";
+    // printf("args %p, *args %p\n", args[0], args[1]);
+
+    while (i <= strlen(s))
+    {
+        if (isSpace(s[i]))
+        {
+            while (isSpace(s[i]))
+            {
+                i++;
+            } // Removes multiple spaces
+            tokenIn[k] = '\0';
+            // printf("tokenIn: %s\n", tokenIn);
+            // *args[j] = malloc(strlen(tokenIn)+1);
+            // printf("%i\n", j);
+            // (*args)[2] = "Test";
+            // printf("1\n");
+            // *((*args)[j]) = tokenIn;k
+            char *tmp = calloc(1, strlen(tokenIn+1));
+            // printf("tmp: %p\n", tmp);
+            strcpy(tmp, tokenIn);
+            args[j] = calloc(1, sizeof(tmp));
+            *args[j] = tmp;
+            // printf("tmp: %p\n", tmp);
+            // printf("args[%i]: %p\n", j, args[j]);
+            // for(int l = 0; l < j; l++){
+                // printf("args[%i]: %s\n", l, *args[l]);
+            // }
+            printf("args[%i]: %p\n", j, *args[j]);
+            printf("args[%i]: %s\n", j, *args[j]);
+
+            // strcpy(args[j], tokenIn);
+            // printf("2\n");
+            clearInput(tokenIn);
+            // free(tmp);
+            // i++;   // Increment character counter
+            // printf("Adding to j\n");
+            j++;   // Increment word counter
+            k = 0; // Reset the tokenIn counter
+        }
+        else
+        {
+            tokenIn[k] = s[i];
+            // printf("%s\n", tokenIn);
+            i++;
+            k++;
+        }
+        // printf("args[%i]: %s\n", j, *args[j]);
+    }
+    // printf("\n");
+    // printf("args[j]: %p\n" *args[1]);
+    return j;
+}
+
+void clearInput(char s[]) // Used to clear the input array
+{
+    int i = 0;
+    while (i < 256) // Set array to null values
+    {
+        s[i] = '\0';
+        i++;
+    }
+}
+
+int isSpace(char charIn) // Checks if charIn is white space
+{
+    if ((charIn == ' ') || (charIn == '\t') || (charIn == '\n') || (charIn == '\v') || (charIn == '\f') || (charIn == '\r') || (charIn == '\0'))
+        return 1;
+    else
+        return 0;
+}
